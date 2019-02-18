@@ -12,9 +12,15 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/', function (req, res) {
+app.get('/weather', function (req, res) {
     res.render('index', {weather: null, error: null});
 });
+
+app.get('/', function (request, response) {
+    response.render('login');
+
+})
+
 
 app.post('/', function (req, res) {
     let city = req.body.city;
