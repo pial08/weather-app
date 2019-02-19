@@ -12,6 +12,10 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
+var loginRouter = require('./routes/login');
+
+
+app.use('/', loginRouter);
 app.get('/weather', function (req, res) {
     res.render('index', {weather: null, error: null});
 });
@@ -22,7 +26,7 @@ app.get('/', function (request, response) {
 })
 
 
-app.post('/', function (req, res) {
+app.post('/weather', function (req, res) {
     let city = req.body.city;
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`
     request(url, function (err, response, body) {
