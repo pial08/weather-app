@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
         res.render('index', {weather: null, error: null});
     }
     else {
-        res.render('error/error', {error: "Email or password does not match"});
+        res.render('errors/error', {error: "Email or password does not match"});
     }
 
 
